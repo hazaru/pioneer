@@ -43,14 +43,19 @@ public class UsuarioController  {
     @DeleteMapping(value = "/usuario/{id}")
     public void deleteById(@PathVariable Long id) {
 
-
-
-
         usuarioRepository.deleteById(id);
-/*
-
-        ResponseEntity.ok(idUsuario + " Deletado");
-*/
 
     }
+
+    @PostMapping(value = "/usuario")
+    public UsuarioEntity updateUsuarioById(Long id){
+        UsuarioEntity u = new UsuarioEntity();
+
+        usuarioRepository.updateUsuarioById(id);
+
+        return new UsuarioEntity();
+    }
+
+
+
 }

@@ -15,4 +15,8 @@ public interface UsuarioRepository extends CrudRepository<UsuarioEntity, Long>
     List<UsuarioEntity> findAll();
 
     void deleteById(Long id);
+
+    UsuarioEntity updateUsuarioById(Long id);
+
+
 }
