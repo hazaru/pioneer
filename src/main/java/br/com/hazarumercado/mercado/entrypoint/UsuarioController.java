@@ -3,13 +3,9 @@ package br.com.hazarumercado.mercado.entrypoint;
 import br.com.hazarumercado.mercado.core.entity.UsuarioEntity;
 import br.com.hazarumercado.mercado.dataprovider.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class UsuarioController  {
@@ -23,20 +19,17 @@ public class UsuarioController  {
 
     @GetMapping(value = "/usuario")
 
-    public ResponseEntity<UsuarioEntity> findAll() {
+    public List<UsuarioEntity> findAll() {
 
-        List<UsuarioEntity> usuario = usuarioRepository.findAll();
-        System.out.println(usuario);
+        List<UsuarioEntity> usuario = (List<UsuarioEntity>) usuarioRepository.findAll();
 
-        return new ResponseEntity(usuario, HttpStatus.OK);
+        return usuario;
     }
 
     @GetMapping(value = "/usuario/{id}")
-    public UsuarioEntity getOne(@PathVariable Long id) {
+    public Optional<UsuarioEntity> getOne(@PathVariable Long id) {
 
-        UsuarioEntity u = new UsuarioEntity();
-
-        UsuarioEntity usuario = usuarioRepository.getOne(id);
+        Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
         return usuario;
     }
 
@@ -47,15 +40,12 @@ public class UsuarioController  {
 
     }
 
-    @PostMapping(value = "/usuario")
+    /*@PostMapping(value = "/usuario")
     public UsuarioEntity updateUsuarioById(Long id){
         UsuarioEntity u = new UsuarioEntity();
 
         usuarioRepository.updateUsuarioById(id);
 
         return new UsuarioEntity();
-    }
-
-
-
+    }*/
 }

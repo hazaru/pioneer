@@ -9,8 +9,11 @@ import java.util.Optional;
 @Component
 public class UsuarioGateway {
 
+
     public Optional<UsuarioEntity> findById(int id) {
         Optional<UsuarioEntity> user = findById(id);
         return user;
     }
+
+
 }
