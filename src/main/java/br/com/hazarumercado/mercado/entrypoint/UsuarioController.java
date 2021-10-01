@@ -40,12 +40,10 @@ public class UsuarioController  {
 
     }
 
-    /*@PostMapping(value = "/usuario")
-    public UsuarioEntity updateUsuarioById(Long id){
+    @PostMapping(value = "/usuario")
+    public UsuarioEntity updateUsuarioById(@RequestBody UsuarioEntity us){
         UsuarioEntity u = new UsuarioEntity();
-
-        usuarioRepository.updateUsuarioById(id);
-
+        usuarioRepository.save(us);
         return new UsuarioEntity();
-    }*/
+    }
 }
